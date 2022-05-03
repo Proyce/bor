@@ -69,7 +69,11 @@ func (f *Flagset) MarkDown() string {
 			items = append(items, fmt.Sprintf("### %s Options", k))
 		}
 		for _, item := range groups[k] {
-			items = append(items, fmt.Sprintf("- ```%s```: %s", item.Name, item.Usage))
+			if item.Usage != "" {
+				items = append(items, fmt.Sprintf("- ```%s```: %s", item.Name, item.Usage))
+			} else {
+				items = append(items, fmt.Sprintf("- ```%s```", item.Name))
+			}
 		}
 	}
 	return strings.Join(items, "\n\n")

@@ -153,6 +153,11 @@ func Commands() map[string]MarkDownCommandFactory {
 				Meta2: meta2,
 			}, nil
 		},
+		"bootnode": func() (MarkDownCommand, error) {
+			return &BootnodeCommand{
+				UI: ui,
+			}, nil
+		},
 	}
 }
 
